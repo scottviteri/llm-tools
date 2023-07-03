@@ -1,0 +1,70 @@
+* LLM Tools
+** Motivation and Concept
+*** Problem with LM Workflows
+Auto-completion: Too low level for LM competence
+Chat window: Giving the LM the wrong primitives
+
+Both are stifling its ability to help you code
+*** Proposed solution
+Give LMs access to the same API that you have in your text editor. If you can edit a character in the middle of a paragraph, it can too. But I don't want to give it access to a mouse and keyboard -- this is unnecessary for a program who's native language is text.
+
+Why not starting with function call API + agents then?
+I want to start from the direction of helping me with my particular pain points
+ Increase automation as deserved
+*** Concretely
+ 1) My shell should accept LM queries but also support regular shell commands
+ 2) My text editor should accept LM queries but also support regular text editing commands
+
+** Command Line Tool
+*** Functionality
+Flags: message, chat, read, delete, undo, shell, proglang, list, debug
+# Start a new chat with ID "example"
+c --message "Hello" --chat example
+# Continue the "example" chat
+c --message "How are you?" --chat example
+# Read the full "example" chat history
+c --read example
+# Undo the last message in the "example" chat
+c --undo example && c --read example
+# List all current chat IDs
+c --list
+# Delete the "example" chat
+c --delete example && c --list
+# Ask for a Python code sample
+c --message "Please succintly write quicksort" --proglang javascript
+# Ask for a shell command to list files
+c --message "Please set env var fruit to banana" --shell eshell
+# Enable debug mode
+c --debug --message "hello"
+
+*** Relation to ShellGPT
+You can also `pip install shell-gpt` for a similar interface
+*** Similarities
+It has equivalents for message, chat, --shell bash, --proglang python, delete, read
+*** Differences
+Missing other shell types (eg zshell or fish or eshell, which matters for setting env vars for instance), other programming languages, undo, and multiple chats
+I'll get into this later, but multiple chats allows you to keep a piece of the context window static, and only add to the part of the conversation that you expect to change often.
+ This is one of the main problems of the chat window workflow
+
+** Emacs Integration Tool
+*** Description
+Gives an emacs command M-x call-claude that generates a call to the python script we just described, with the following features:
+
+If you are highlighting a region, that region becomes the message.
+The user is prompted to optionally input a prepended string, such as "capitalize the following text:".
+The user gets to choose what to do with the LM's output:
+1) Replace the region
+2) Append beyond the current cursor or region
+3) Printing the output (in minibuffer)
+4) Adding it to the copy-paste ring
+*** Read elisp code demo
+*** Org mode next task demo
+** Github and Future Work
+*** Use at https://github.com/scottviteri/llm-tools
+*** Future Work:
+**** Add tools
+Especially the tool describing emacs function to call
+Because then you could have it check the file after it is done by calling python-shell-send-region
+**** Add agents
+Then it could keep making edits and checking them using the attached python process
+Would be nice to have a agent working on my todos
