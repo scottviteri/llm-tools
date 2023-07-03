@@ -1,55 +1,57 @@
+Sure, here's the revised README content reflecting the necessary changes:
+
+---
+
 # llm-tools
 
-This repository contains tools for interacting with the Claude AI from within Emacs and the command line. It includes a Python script `lm.py` for interfacing with the Claude API, and an Emacs Lisp package `llm-tools.el` for integrating this functionality into Emacs.
+A collection of tools to enhance productivity, including a Python-based command-line tool and an Emacs Lisp package.
+
+## Prerequisites
+- Claude API Access (Note: An option to use the OpenAI API will be added in the future).
 
 ## Installation
 
-### Python script
-
 1. Clone the repository:
 
-```bash
-git clone https://github.com/scottviteri/llm-tools.git
-```
+    ```bash
+    git clone https://github.com/scottviteri/llm-tools.git
+    ```
 
-2. Navigate to the directory:
+2. Change the permissions on the `lm` file to make it executable:
 
-```bash
-cd llm-tools
-```
+    ```bash
+    chmod +x /path/to/llm-tools/lm
+    ```
 
-3. Add the directory to your PATH in your shell profile file. If you're using bash, you can add this line to your `~/.bashrc` or `~/.bash_profile`:
+3. Add the directory containing the `lm` script to your system's PATH. This can be done in your shell profile file (like `~/.bashrc` or `~/.bash_profile` for bash, or `~/.zshrc` for zsh):
 
-```bash
-export PATH=$PATH:$(pwd)
-```
+    ```bash
+    export PATH=$PATH:/path/to/llm-tools
+    ```
 
-If you're using zsh, add that line to your `~/.zshrc`.
+    Don't forget to source your profile file (or restart your terminal) to apply the changes:
 
-### Emacs package
+    ```bash
+    source ~/.bashrc
+    ```
 
-In your Emacs configuration file, add the following lines:
+4. In your Emacs configuration, add the following line to install the `llm-tools.el` package using `straight-use-package`:
 
-```elisp
-(straight-use-package '("llm-tools" :type git :host github :repo "scottviteri/llm-tools"))
-(require 'llm-tools)
-```
+    ```elisp
+    (straight-use-package '("llm-tools" :type git :host github :repo "scottviteri/llm-tools"))
+    ```
+
+5. Restart Emacs to apply the changes.
 
 ## Usage
 
-### Python script
+The `lm` command-line tool can be used to interact with the Claude API and manage chat histories.
 
-You can call the `lm.py` script from the command line as follows:
+The `call-claude` function provided by `llm-tools.el` can be used within Emacs to send text to the `lm` tool and display the result. This requires `lm` to be in your system's PATH.
 
-```bash
-lm --help
-```
+---
 
-This will display the script's usage instructions.
-
-### Emacs package
-
-You can use the `call-claude` command provided by the `llm-tools` package in Emacs. Simply call `M-x call-claude` and follow the prompts.
+Please remember to replace "/path/to/llm-tools" with the actual path to the `llm-tools` directory on your system.
 
 ## License
 

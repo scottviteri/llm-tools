@@ -9,9 +9,9 @@ import subprocess
 # External module
 from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 
-# This script acts as a command-line interface for interacting with 
-# the "Claude" AI model from the Anthropic API. It provides functionalities 
-# like loading and managing conversation histories, creating AI prompts, 
+# This script acts as a command-line interface for interacting with
+# the "Claude" AI model from the Anthropic API. It provides functionalities
+# like loading and managing conversation histories, creating AI prompts,
 # fetching AI completions, and executing shell commands based on AI's response.
 
 # Initialize command-line argument parser
@@ -101,7 +101,7 @@ if args.delete:
 
 # Prepare the prompt for the AI. This is based on the provided message and the chosen command
 if args.shell:
-    message = f"{args.message}. Please provide a {args.shell} shell command in arch linux with no other surrounding text."
+    message = f"{args.message}. Use directly executable {args.shell} syntax, and if you need to think to yourself, put it in comments. If eshell, use elisp notation. The OS is arch linux."
 elif args.proglang:
     message = f"{args.message}. Please ONLY provide runnable code in the {args.proglang} programming language. Do NOT write any other natural language text unless it is commented."
 else:
@@ -151,4 +151,3 @@ if args.chat:
 #        subprocess.run(completion, shell=True)
 
 print()
-
