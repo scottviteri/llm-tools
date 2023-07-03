@@ -35,10 +35,12 @@ A collection of tools to enhance productivity, including a Python-based command-
     source ~/.bashrc
     ```
 
-4. In your Emacs configuration, add the following line to install the `llm-tools.el` package using `straight-use-package`:
+4. In your Emacs configuration, add the following lines to install the `llm-tools.el` package using `straight-use-package`:
+
 
     ```elisp
-    (straight-use-package '("llm-tools" :type git :host github :repo "scottviteri/llm-tools"))
+    (straight-use-package '(llm-tools :type git :host github :repo "scottviteri/llm-tools"))
+    (require 'llm-tools)
     ```
 
 5. Restart Emacs to apply the changes.

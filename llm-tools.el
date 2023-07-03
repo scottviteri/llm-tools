@@ -67,3 +67,5 @@
 
       ;; Clean up by killing the output buffer.
       (kill-buffer output-buffer))))
+
+(provide 'llm-tools)
