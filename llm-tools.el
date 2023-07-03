@@ -15,8 +15,9 @@
 
     ;; Collect the region of text if one is selected.
     (let* ((region (if (use-region-p)
-                       (buffer-substring-no-properties (region-beginning) (region-end))
-                       ""))  ;; If not, default to an empty string.
+                       ;(my-buffer-substring-no-properties-escape-percent (region-beginning) (region-end))
+                       (replace-regexp-in-string "%" "%%" (buffer-substring-no-properties (region-beginning) (region-end)))
+                     "")) ;; If not, default to an empty string.
 
            ;; Prompt the user for any string they wish to prepend to the input.
            (prepend (read-string "Enter the string to prepend (or leave empty): "))
@@ -40,7 +41,7 @@
            (output-location (completing-read "Where do you want to put the output? " output-locations nil t)))
 
       ;; Print the command to the minibuffer for user's information.
-      (message command)
+      (message "%s" (replace-regexp-in-string "%" "%%" command))
 
       ;; Execute the shell command and store the output in the prepared buffer.
       (shell-command command output-buffer)
