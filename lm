@@ -115,7 +115,7 @@ if args.debug:
 # Get the completion from the AI. This is done by sending a request to the Anthropic API
 response = anthropic.completions.create(
     model="claude-1.3",
-    max_tokens_to_sample=1000,
+    max_tokens_to_sample=3000,
     prompt=prompt,
     stream=True
 )
