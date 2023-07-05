@@ -26,7 +26,7 @@
            (flags (read-string "Enter any flags for the Claude script: "))
 
            ;; Quote the input string to make it safe for shell command execution.
-           (input (shell-quote-argument (concat prepend " " region)))
+           (input (concat prepend " " region))
 
            ;; Prepare a new buffer to hold the output from the shell command.
            (output-buffer (generate-new-buffer "*claude-output*"))
@@ -40,8 +40,9 @@
            ;; Prompt the user for the desired output location.
            (output-location (completing-read "Where do you want to put the output? " output-locations nil t)))
 
+      (message "Input: %s" input)
       ;; Print the command to the minibuffer for user's information.
-      (message "%s" (replace-regexp-in-string "%" "%%" command))
+      (message "%s" command)
 
       ;; Execute the shell command and store the output in the prepared buffer.
       (shell-command command output-buffer)

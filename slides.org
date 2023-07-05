@@ -3,6 +3,7 @@
 *** Problem with LM Workflows
 Auto-completion: Too low level for LM competence
 Chat window: Giving the LM the wrong primitives
+Better code intepreter?
 
 Both are stifling its ability to help you code
 *** Proposed solution
@@ -19,23 +20,23 @@ I want to start from the direction of helping me with my particular pain points
 *** Functionality
 Flags: message, chat, read, delete, undo, shell, proglang, list, debug
 # Start a new chat with ID "example"
-c --message "Hello" --chat example
+lm --message "Hello" --chat example
 # Continue the "example" chat
-c --message "How are you?" --chat example
+lm --message "How are you?" --chat example
 # Read the full "example" chat history
-c --read example
+lm --read example
 # Undo the last message in the "example" chat
-c --undo example && c --read example
+lm --undo example && lm --read example
 # List all current chat IDs
-c --list
+lm --list
 # Delete the "example" chat
-c --delete example && c --list
+lm --delete example && lm --list
 # Ask for a Python code sample
-c --message "Please succintly write quicksort" --proglang javascript
+lm --message "Please succintly write quicksort" --proglang javascript
 # Ask for a shell command to list files
-c --message "Please set env var fruit to banana" --shell eshell
+lm --message "Please set env var fruit to banana" --shell eshell
 # Enable debug mode
-c --debug --message "hello"
+lm --debug --message "hello"
 
 *** Relation to ShellGPT
 You can also `pip install shell-gpt` for a similar interface
