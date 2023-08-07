@@ -29,8 +29,14 @@ llm-tools is a collection of productivity tools designed to enhance the interact
 4. In your Emacs configuration, add the following lines to install the `llm-tools.el` package using `straight-use-package`:
 
     ```elisp
-    (straight-use-package '(llm-tools :type git :host github :repo "scottviteri/llm-tools"))
+    (straight-use-package '(llm-tools :type git :local-repo "/path/to/llm-tools"))
     (require 'llm-tools)
+    ```
+Replace `/path/to/llm-tools` with the actual path to your `llm-tools` directory.
+
+Alternatively, you can load the `llm-tools.el` file directly:
+    ```elisp
+    (load-file "/path/to/llm-tools/llm-tools.el")
     ```
 
 5. Restart Emacs to apply the changes.

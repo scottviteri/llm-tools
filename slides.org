@@ -21,7 +21,7 @@ For now just single call, increase as deserved
 ***** Shell
 ***** Text editor
 ** Command Line Tool
-*** Functionality
+*** Demo commands
 Flags: message, chat, read, delete, undo, shell, proglang, list, debug
 # Start a new chat with ID "example"
 lm --message "Hello" --chat example
@@ -51,8 +51,9 @@ Missing other shell types (eg zshell or fish or eshell, which matters for settin
 I'll get into this later, but multiple chats allows you to keep a piece of the context window static, and only add to the part of the conversation that you expect to change often.
  This is one of the main problems of the chat window workflow
 
-** Emacs Integration Tool
-*** call-claude
+** Text Editor Tool
+*** Emacs
+**** call-claude
 **** Use region or curson position
 **** Prepend text including flags
 **** Output choice
@@ -60,9 +61,11 @@ I'll get into this later, but multiple chats allows you to keep a piece of the c
 ***** Append beyond the current cursor or region
 ***** Printing the output (in minibuffer)
 ***** Adding it to the copy-paste ring
-*** Read elisp code demo
-*** Org mode next task demo
-** VSCode Integration Tool
+**** Read elisp code demo
+**** Org mode next task demo
+*** VSCode
+**** Cursor.sh
+**** Honestly is better, will receive more developer support
 ** Links and Future Work
 *** Emacs: https://github.com/scottviteri/llm-tools
 *** VSCode: https://cursor.sh

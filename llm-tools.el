@@ -35,7 +35,6 @@
            (command (concat lm-location " " flags " --message " input))
            ;; Formulate the shell command that will be sent to Claude.
            ;(command (format "%s %s --message \"%s\"" lm-location flags input))
-
            ;(command (concat lm-location " " flags " --message \"" input "\""))
 
            ;; Define the possible output locations for the response from Claude.
