@@ -1,13 +1,16 @@
 * LLM Tools
 ** Motivation and Concept
 *** Problem with LM Workflows
-Auto-completion: Too low level for LM competence
-Chat window: Giving the LM the wrong primitives
-Better code intepreter?
-
-Both are stifling its ability to help you code
+**** Auto completion
+Too low level for LM competence
+**** Chat window
+Giving the LM the wrong primitives
+Even code interpreter has this same problem
+**** Both are stifling its ability to help you code
 *** Proposed solution
-Give LMs access to the same API that you have in your text editor. If you can edit a character in the middle of a paragraph, it can too. But I don't want to give it access to a mouse and keyboard -- this is unnecessary for a program who's native language is text.
+**** LMs get human API
+They get to use your text editor.
+If you can edit a character in the middle of a paragraph, it can too. But I don't want to give it access to a mouse and keyboard -- this is unnecessary for a program who's native language is text.
 
 Why not starting with function call API + agents then?
 I want to start from the direction of helping me with my particular pain points

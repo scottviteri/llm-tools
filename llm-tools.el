@@ -15,9 +15,8 @@
 
     ;; Collect the region of text if one is selected.
     (let* ((region (if (use-region-p)
-                       ;(my-buffer-substring-no-properties-escape-percent (region-beginning) (region-end))
-                       (replace-regexp-in-string "%" "%%" (buffer-substring-no-properties (region-beginning) (region-end)))
-                     "")) ;; If not, default to an empty string.
+                       (buffer-substring-no-properties (region-beginning) (region-end))
+                       "")) ;; If not, default to an empty string.
 
            ;; Prompt the user for any string they wish to prepend to the input.
            (prepend (read-string "Enter the string to prepend (or leave empty): "))
@@ -26,13 +25,18 @@
            (flags (read-string "Enter any flags for the Claude script: "))
 
            ;; Quote the input string to make it safe for shell command execution.
-           (input (concat prepend " " region))
+           (input (shell-quote-argument (concat prepend " " region)))
+           ;(input (concat prepend " " region))
 
            ;; Prepare a new buffer to hold the output from the shell command.
            (output-buffer (generate-new-buffer "*claude-output*"))
 
            ;; Formulate the shell command that will be sent to Claude.
-           (command (concat lm-location " " flags " --message \"" input "\""))
+           (command (concat lm-location " " flags " --message " input))
+           ;; Formulate the shell command that will be sent to Claude.
+           ;(command (format "%s %s --message \"%s\"" lm-location flags input))
+
+           ;(command (concat lm-location " " flags " --message \"" input "\""))
 
            ;; Define the possible output locations for the response from Claude.
            (output-locations '("replace" "append" "new line" "minibuffer" "kill ring"))

@@ -98,7 +98,7 @@ def main(args):
     if args.shell:
         message = f"{args.message}. Use directly executable {args.shell} syntax, and if you need to think to yourself, put it in comments. If eshell, use elisp notation. The OS is arch linux."
     elif args.proglang:
-        message = f"{args.message}. Please ONLY provide runnable code in the {args.proglang} programming language. Do NOT write any other natural language text unless it is commented."
+        message = f"{args.message}. Please provide directly runnable code in the {args.proglang} programming language, without starting backticks or natural language text."
     else:
         message = args.message
 
