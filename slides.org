@@ -2,24 +2,21 @@
 ** Motivation and Concept
 *** Problem with LM Workflows
 **** Auto completion
-Too low level for LM competence
+***** Awkward for:
+****** Consistently changing variable names
+****** Code refactor
+****** High level code feedback
+***** Too low level
 **** Chat window
-Giving the LM the wrong primitives
-Even code interpreter has this same problem
-**** Both are stifling its ability to help you code
+***** Copy/pasting (whole or diffs)
+***** Hard to give it the correct context
+**** Both stifle its ability to help you code
 *** Proposed solution
-**** Let LMs interact with computers the way you do
-***** Shell commands (w/ approval)
-***** Text editor commands
+**** Let LMs share the computer - Same API
+**** Shell commands (w/ approval)
+**** Text editor commands
 Emacs makes this especially easy
 Eg) evil-forward-word-end evil-search-forward
-**** Incremental automation
-Could use function call API + agents to extend
-For now just single call, increase as deserved
-*** Concretely
-**** Accept lm queries and also regular commands
-***** Shell
-***** Text editor
 ** Command Line Tool
 *** Demo commands
 Flags: message, chat, read, delete, undo, shell, proglang, list, debug
@@ -54,15 +51,15 @@ I'll get into this later, but multiple chats allows you to keep a piece of the c
 ** Text Editor Tool
 *** Emacs
 **** call-claude
-**** Use region or curson position
-**** Prepend text including flags
-**** Output choice
-***** Replace the region
-***** Append beyond the current cursor or region
-***** Printing the output (in minibuffer)
-***** Adding it to the copy-paste ring
+***** Use region or curson position
+***** Prepend text including flags
+***** Flexible output
+****** Replace the region
+****** Append beyond the current cursor or region
+****** Printing the output (in minibuffer)
+****** Adding it to the copy-paste ring
 **** Read elisp code demo
-**** Org mode next task demo
+**** Org mode next task demo (optional)
 *** VSCode
 **** Cursor.sh
 **** Honestly is better, will receive more developer support
