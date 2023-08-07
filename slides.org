@@ -8,17 +8,18 @@ Giving the LM the wrong primitives
 Even code interpreter has this same problem
 **** Both are stifling its ability to help you code
 *** Proposed solution
-**** LMs get human API
-They get to use your text editor.
-If you can edit a character in the middle of a paragraph, it can too. But I don't want to give it access to a mouse and keyboard -- this is unnecessary for a program who's native language is text.
-
-Why not starting with function call API + agents then?
-I want to start from the direction of helping me with my particular pain points
- Increase automation as deserved
+**** Let LMs interact with computers the way you do
+***** Shell commands (w/ approval)
+***** Text editor commands
+Emacs makes this especially easy
+Eg) evil-forward-word-end evil-search-forward
+**** Incremental automation
+Could use function call API + agents to extend
+For now just single call, increase as deserved
 *** Concretely
- 1) My shell should accept LM queries but also support regular shell commands
- 2) My text editor should accept LM queries but also support regular text editing commands
-
+**** Accept lm queries and also regular commands
+***** Shell
+***** Text editor
 ** Command Line Tool
 *** Functionality
 Flags: message, chat, read, delete, undo, shell, proglang, list, debug
@@ -43,32 +44,32 @@ lm --debug --message "hello"
 
 *** Relation to ShellGPT
 You can also `pip install shell-gpt` for a similar interface
-*** Similarities
+**** Similarities
 It has equivalents for message, chat, --shell bash, --proglang python, delete, read
-*** Differences
+**** Differences
 Missing other shell types (eg zshell or fish or eshell, which matters for setting env vars for instance), other programming languages, undo, and multiple chats
 I'll get into this later, but multiple chats allows you to keep a piece of the context window static, and only add to the part of the conversation that you expect to change often.
  This is one of the main problems of the chat window workflow
 
 ** Emacs Integration Tool
-*** Description
-Gives an emacs command M-x call-claude that generates a call to the python script we just described, with the following features:
-
-If you are highlighting a region, that region becomes the message.
-The user is prompted to optionally input a prepended string, such as "capitalize the following text:".
-The user gets to choose what to do with the LM's output:
-1) Replace the region
-2) Append beyond the current cursor or region
-3) Printing the output (in minibuffer)
-4) Adding it to the copy-paste ring
+*** call-claude
+**** Use region or curson position
+**** Prepend text including flags
+**** Output choice
+***** Replace the region
+***** Append beyond the current cursor or region
+***** Printing the output (in minibuffer)
+***** Adding it to the copy-paste ring
 *** Read elisp code demo
 *** Org mode next task demo
-** Github and Future Work
-*** Use at https://github.com/scottviteri/llm-tools
+** VSCode Integration Tool
+** Links and Future Work
+*** Emacs: https://github.com/scottviteri/llm-tools
+*** VSCode: https://cursor.sh
 *** Future Work:
-**** Add tools
-Especially the tool describing emacs function to call
-Because then you could have it check the file after it is done by calling python-shell-send-region
-**** Add agents
-Then it could keep making edits and checking them using the attached python process
-Would be nice to have a agent working on my todos
+**** GPT Function Call API
+Especially for emacs functions
+Code interpreter for free with python-shell-send-region
+**** Agent Loops
+Multiple edits in a row, using previous results
+Build and cross off TODO lists
